@@ -48,13 +48,9 @@ def run_test(test_call_str: str):
         proc.start()
         processes.append(proc)
 
-    timestamp = time.time()
-    est = test_call.max_calls / test_call.num_users
-    rand = random.randint(5, 30)
-    m_t = min(random.randint(720, 900), (rand if rand > est else est) + random.randint(0, test_call.num_users))
     for proc in processes:
         print("WAITING FOR: ", proc)
-        proc.join(timeout=(m_t - max((time.time() - timestamp), 0)))
+        proc.join(timeout=3600)
 
     for proc in processes:
         if proc.is_alive():
