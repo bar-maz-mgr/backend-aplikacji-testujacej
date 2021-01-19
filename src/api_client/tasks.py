@@ -50,7 +50,7 @@ def run_test(test_call_str: str):
 
     for proc in processes:
         print("WAITING FOR: ", proc)
-        proc.join(timeout=3600)
+        proc.join(timeout=(24*3600))
 
     for proc in processes:
         if proc.is_alive():
