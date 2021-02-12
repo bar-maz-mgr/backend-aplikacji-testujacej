@@ -236,7 +236,10 @@ class TestCallCSVView(APIView):
                     r.get("cpu_usage_current")
                     cpu_current = r.get("cpu_usage_current")
                     if cpu_current:
-                        timestamp = datetime.strptime(cpu_current.get("timestamp"), "%Y-%m-%d %H:%M:%S.%f").timestamp()
+                        try:    
+                            timestamp = datetime.strptime(cpu_current.get("timestamp"), "%Y-%m-%d %H:%M:%S.%f").timestamp()
+                        except:
+                            timestamp = datetime.strptime(cpu_current.get("timestamp"), "%Y-%m-%d %H:%M:%S").timestamp()
                     else:
                         timestamp = None
                     writer.writerow([timestamp, r.get("num_sql_queries"), r.get("time_spent_on_sql_queries"),
