@@ -1,4 +1,4 @@
-FROM python:3.6-alpine
+FROM python:3.6-alpine3.13
 
 RUN export CRYPTOGRAPHY_DONT_BUILD_RUST=1
 RUN apk update
@@ -13,7 +13,8 @@ RUN apk add --no-cache \
     linux-headers \
     build-base \
     libffi-dev \
-    memcached
+    memcached \ 
+    rust
 
 RUN mkdir /app
 ADD ./ /usr/src/app
