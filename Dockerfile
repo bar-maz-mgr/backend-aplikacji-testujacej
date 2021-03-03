@@ -1,5 +1,6 @@
 FROM python:3.6-alpine
 
+RUN export CRYPTOGRAPHY_DONT_BUILD_RUST=1
 RUN apk update
 RUN apk add --no-cache \
     python3 \
