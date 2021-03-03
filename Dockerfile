@@ -14,7 +14,8 @@ RUN apk add --no-cache \
     build-base \
     libffi-dev \
     memcached \ 
-    rust
+    rust \
+    cargo
 
 RUN mkdir /app
 ADD ./ /usr/src/app
